@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import { ProSidebarProvider, } from "react-pro-sidebar";
+import { Route, Routes } from "react-router-dom";
 import './App.css';
+import { Navbar } from './Components';
+
+import {
+  BrowsePage,
+  GenrePage,
+  HomePage,
+  MagicPage,
+  SearchPage,
+  TrendingPage
+} from "./Scenes";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="navbar-container">
+        <ProSidebarProvider>
+          <Navbar />
+        </ProSidebarProvider>
+      </div>
+      <div className="main-container">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/Genre/:genre" element={<GenrePage />} />
+          <Route path="/Trending" element={<TrendingPage />} />
+          <Route path="/Browse" element={<BrowsePage />} />
+          <Route path="/Search" element={<SearchPage />} />
+          <Route path="/read/:title" element={<MagicPage />} />
+        </Routes>
+      </div>
     </div>
   );
 }

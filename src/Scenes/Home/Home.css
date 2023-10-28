@@ -1,0 +1,12 @@
+.home-container {
+  padding-bottom: 16px;
+}
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 16px));
+  gap: 20px;
+  justify-content: center;
+}
+h1 {
+  text-align: center;
+}
