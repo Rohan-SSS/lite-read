@@ -5,9 +5,10 @@ import { Navbar } from './Components';
 
 import {
   BrowsePage,
-  GenrePage,
   HomePage,
   MagicPage,
+  // GenrePage,
+  NewPage,
   SearchPage,
   TrendingPage
 } from "./Scenes";
@@ -23,11 +24,13 @@ function App() {
       <div className="main-container">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/Genre/:genre" element={<GenrePage />} />
-          <Route path="/Trending" element={<TrendingPage />} />
-          <Route path="/Browse" element={<BrowsePage />} />
-          <Route path="/Search" element={<SearchPage />} />
+          {/* genre tbi */}
+          {/* <Route path="/Genre/:genre" element={<GenrePage />} /> */}
+          <Route path="/trending" element={<TrendingPage />} />
+          <Route path="/browse" element={<BrowsePage />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="/read/:title" element={<MagicPage />} />
+          <Route path="/new" element={<NewPage />} />
         </Routes>
       </div>
     </div>
