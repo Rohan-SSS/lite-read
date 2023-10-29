@@ -1,9 +1,10 @@
 import {
-  Apps as BrowseIcon,
-  Home as HomeIcon,
+  ViewCarouselRounded as BrowseIcon,
+  HomeRounded as HomeIcon,
   MenuRounded as MenuIcon,
-  Search as SearchIcon,
-  Whatshot as TrendingIcon,
+  LoupeRounded as NewIcon,
+  SearchRounded as SearchIcon,
+  WhatshotRounded as TrendingIcon,
 } from "@mui/icons-material/";
 import { React, useState } from "react";
 import { Menu, MenuItem, Sidebar } from "react-pro-sidebar";
@@ -20,7 +21,6 @@ const Navbar = () => {
   const getHoverStyle = (itemId) => ({
     backgroundColor:
       activeItem === itemId ? "rgba(0, 0, 0, 0.4)" : "transparent",
-    margin: "8px",
   });
 
   return (
@@ -36,7 +36,7 @@ const Navbar = () => {
             onMouseEnter={() => setActiveItem("storify")}
             onMouseLeave={() => setActiveItem(null)}
           >
-            <h2>s t o r i f y</h2>
+            <h2>lite read</h2>
           </MenuItem>
           <MenuItem
             style={getHoverStyle("home")}
@@ -46,6 +46,50 @@ const Navbar = () => {
             onMouseLeave={() => setActiveItem(null)}
           >
             home
+          </MenuItem>
+          <MenuItem
+            style={getHoverStyle("trending")}
+            component={
+              <Link to="/trending" className="link" onClick={handleClicks} />
+            }
+            icon={<TrendingIcon className="icon" />}
+            onMouseEnter={() => setActiveItem("trending")}
+            onMouseLeave={() => setActiveItem(null)}
+          >
+            trending
+          </MenuItem>
+          <MenuItem
+            style={getHoverStyle("new")}
+            component={
+              <Link to="/new" className="link" onClick={handleClicks} />
+            }
+            icon={<NewIcon />}
+            onMouseEnter={() => setActiveItem("new")}
+            onMouseLeave={() => setActiveItem(null)}
+          >
+            just added
+          </MenuItem>
+          <MenuItem
+            style={getHoverStyle("browse")}
+            component={
+              <Link to="/browse" className="link" onClick={handleClicks} />
+            }
+            icon={<BrowseIcon />}
+            onMouseEnter={() => setActiveItem("browse")}
+            onMouseLeave={() => setActiveItem(null)}
+          >
+            browse
+          </MenuItem>
+          <MenuItem
+            style={getHoverStyle("search")}
+            component={
+              <Link to="/Search" className="link" onClick={handleClicks} />
+            }
+            icon={<SearchIcon />}
+            onMouseEnter={() => setActiveItem("search")}
+            onMouseLeave={() => setActiveItem(null)}
+          >
+            search
           </MenuItem>
           {/* <SubMenu className="genre-submenu" label="Genre" icon={<GenreIcon />}>
             {[
@@ -76,39 +120,6 @@ const Navbar = () => {
               </MenuItem>
             ))}
           </SubMenu> */}
-          <MenuItem
-            style={getHoverStyle("trending")}
-            component={
-              <Link to="/Trending" className="link" onClick={handleClicks} />
-            }
-            icon={<TrendingIcon className="icon" />}
-            onMouseEnter={() => setActiveItem("trending")}
-            onMouseLeave={() => setActiveItem(null)}
-          >
-            trending
-          </MenuItem>
-          <MenuItem
-            style={getHoverStyle("browse")}
-            component={
-              <Link to="/Browse" className="link" onClick={handleClicks} />
-            }
-            icon={<BrowseIcon />}
-            onMouseEnter={() => setActiveItem("browse")}
-            onMouseLeave={() => setActiveItem(null)}
-          >
-            browse
-          </MenuItem>
-          <MenuItem
-            style={getHoverStyle("search")}
-            component={
-              <Link to="/Search" className="link" onClick={handleClicks} />
-            }
-            icon={<SearchIcon />}
-            onMouseEnter={() => setActiveItem("search")}
-            onMouseLeave={() => setActiveItem(null)}
-          >
-            search
-          </MenuItem>
         </Menu>
       </Sidebar>
     </div>
