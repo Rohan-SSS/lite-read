@@ -1,16 +1,30 @@
 .magic {
   width: 100%;
-  height: 94%;
+  height: 100%;
+  margin: 16px 0px 16px 0px;
 }
 
 .magic-box {
   display: flex;
-  height: 90%;
+  height: 98%;
 }
 
 .magic-box.center-textbox {
   justify-content: center;
 }
+
+.navbox {
+  position: absolute;
+  left: 0px;
+  height: 98%;
+  width: 18%;
+  /* animation-duration: 0.2s;
+  animation-fill-mode: forwards; */
+}
+
+/* .navbox.fadeIn {
+  animation-name: fadeInFromRight;
+} */
 
 .textbox {
   max-width: 62%;
@@ -22,8 +36,52 @@
   max-width: 35%;
   width: 100%;
   height: 100%;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards; /* Keeps the end state */
+}
+
+.botbox.enter {
+  animation-name: fadeInFromLeft;
+}
+
+.botbox.exit {
+  animation-name: fadeOutToLeft;
 }
 
 .toggleButton {
   max-height: 42px;
 }
+
+@keyframes fadeInFromLeft {
+  from {
+    transform: translateX(-12%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* not being applied, as after re-render state is set to false */
+@keyframes fadeOutToLeft {
+  from {
+    transform: translateX(0);
+    opacity: 0.2;
+  }
+  to {
+    transform: translateX(-12%);
+    opacity: 0;
+  }
+}
+/*
+@keyframes fadeInFromRight {
+  from {
+    transform: translateX(12%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+} */

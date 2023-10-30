@@ -1,0 +1,38 @@
+.nav-container {
+  padding: 8px;
+}
+.nav-heading {
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.nav-page {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.nav-current {
+  padding: 24px;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+}
+
+.nav-buttons {
+  max-height: 4vh;
+  padding: 24px 0px 0px 0px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  margin: 68vh 0px 2vh 0px;
+}
+
+.nav-jump {
+  display: flex;
+  font-size: 20px;
+  font-weight: 500;
+  justify-content: center;
+}
