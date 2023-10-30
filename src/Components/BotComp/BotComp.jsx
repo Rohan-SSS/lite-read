@@ -8,39 +8,51 @@ const BotComp = () => {
   const [inputValue, setInputValue] = useState("");
   const messageEndRef = useRef(null);
 
+  useEffect(() => {
+    setMessages([{ type: "bot", text: "Hello, how can I assist you?" }]);
+  }, []);
+
   //submit handler
   const handleSubmit = async () => {
     if (inputValue.trim() === "") return;
 
-    //adds user message to message array
+    // Adds user message to message array
     setMessages((prevMessages) => [
       ...prevMessages,
       { type: "user", text: inputValue },
     ]);
 
-    // clear the message from input box
+    // Clear the message from input box
     setInputValue("");
 
-    //fetches prompt response
-    const response = await fetch("http://127.0.0.1:8000/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // example response {"reply": f"Mock response for: {message.message}"}
-      body: JSON.stringify({ message: inputValue }),
-    });
+    setTimeout(async () => {
+      // Show the "Getting response" message after a 500ms delay
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        {
+          type: "bot",
+          text: "Getting response ",
+          specialClass: "getting-response",
+        },
+      ]);
 
-    //wait till respons is recieved
-    const data = await response.json();
+      // Fetches prompt response
+      const response = await fetch("http://127.0.0.1:8000/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: inputValue }),
+      });
 
-    //add prompt answer to message array
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { type: "bot", text: data.reply },
-    ]);
+      // Wait till response is received
+      const data = await response.json();
 
-    // setInputValue("");
+      setMessages((prevMessages) => [
+        ...prevMessages.slice(0, prevMessages.length - 1),
+        { type: "bot", text: data.reply },
+      ]);
+    }, 1000); // 500ms delay
   };
 
   //return key handler
@@ -96,7 +108,10 @@ const BotComp = () => {
       <div className="messages">
         {/* mapping message to bot and user */}
         {messages.map((message, index) => (
-          <div key={index} className={`message ${message.type}`}>
+          <div
+            key={index}
+            className={`message ${message.type} ${message.specialClass || ""}`}
+          >
             {message.text}
           </div>
         ))}
