@@ -1,6 +1,7 @@
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 import { Button, MenuItem, Select } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { StoryContext } from "../StoryProvider";
 import "./MgNavComp.css";
 
 const MgNavComp = ({ title }) => {
@@ -10,6 +11,8 @@ const MgNavComp = ({ title }) => {
     pageRange: "",
   });
   const [pages, setPages] = useState([]);
+
+  const storyContext = useContext(StoryContext);
 
   const fetchData = async () => {
     const response = await fetch("http://127.0.0.1:8000/api/pages");
@@ -32,6 +35,7 @@ const MgNavComp = ({ title }) => {
       try {
         await fetchData();
         await fetchChapterData(currentPage);
+        storyContext.changeStory(currentPage);
       } catch (err) {
         console.error("Failed to fetch data:", err);
       }
@@ -59,7 +63,7 @@ const MgNavComp = ({ title }) => {
         <div className="nav-jump">
           <Select
             value={currentPage}
-            onChange={(e) => setCurrentPage(e.target.value)}
+            onChange={(e) => setCurrentPage(Number(e.target.value))}
             displayEmpty
           >
             {pages.map((page, index) => (
