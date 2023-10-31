@@ -6,10 +6,17 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { Link } from "react-router-dom";
+import "./MediaCard.css";
 
 export default function ImgMediaCard(props) {
   return (
-    <Card className="card-div" sx={{ background: "rgba(0, 0, 0, 0.2)" }}>
+    <Card
+      className="card-div"
+      sx={{
+        background: "rgba(0, 0, 0, 0.2)",
+        // ":hover": { background: "rgba(0, 0, 0, 0.3)" },
+      }}
+    >
       <CardMedia
         component="img"
         alt={props.alt}
@@ -17,7 +24,15 @@ export default function ImgMediaCard(props) {
         image={props.imageUrl}
       />
       <CardContent>
-        <Typography gutterBottom variant="h7" component="div">
+        <Typography
+          gutterBottom
+          variant="h7"
+          component="div"
+          sx={{
+            fontWeight: "700",
+            color: "rgba(0, 0, 0, 0.8)",
+          }}
+        >
           <center>{props.title}</center>
         </Typography>
       </CardContent>
@@ -35,7 +50,7 @@ export default function ImgMediaCard(props) {
             ":hover": { background: "rgba(0, 0, 0, 0.4)" },
           }}
         >
-          Read
+          <span className="custom-text">READ</span>
         </Button>
         <Button
           size="small"
@@ -46,7 +61,7 @@ export default function ImgMediaCard(props) {
             ":hover": { background: "rgba(0, 0, 0, 0.4)" },
           }}
         >
-          MAL
+          <span className="custom-text">MAL</span>
         </Button>
       </CardActions>
     </Card>

@@ -57,6 +57,10 @@ const MgNavComp = ({ title }) => {
             setCurrentPage((prev) => Math.min(prev + 1, pages.length))
           }
           disabled={isLastPage}
+          sx={{
+            color: "black",
+            ":hover": { background: "rgba(0, 0, 0, 0.4)" },
+          }}
         >
           <ArrowForward />
         </Button>
@@ -77,6 +81,10 @@ const MgNavComp = ({ title }) => {
           className="prev-button"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={isFirstPage}
+          sx={{
+            color: "black",
+            ":hover": { background: "rgba(0, 0, 0, 0.4)" },
+          }}
         >
           <ArrowBack />
         </Button>
