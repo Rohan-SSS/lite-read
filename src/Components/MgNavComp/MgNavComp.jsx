@@ -142,36 +142,37 @@ const MgNavComp = ({ title }) => {
           </Grid>
         </div>
 
-        <div className="nav-page"></div>
-        <h7 className="nav-page-heading">Page</h7>
-        <Grid
-          className="nav-page-items"
-          container
-          justifyContent="flex-start"
-          style={{
-            width: "100%",
-            padding: "4px 0px 4px 0px",
-          }}
-        >
-          {pages.map((page) => (
-            <Grid item xs="auto" key={page} sx={{ paddingLeft: "auto" }}>
-              <Button
-                variant={page === selectedPage ? "contained" : ""}
-                style={{
-                  backgroundColor:
-                    page === selectedPage ? "#3f51b5" : "transparent",
-                  color: page === selectedPage ? "#fff" : "#3f51b5",
-                }}
-                onClick={() => {
-                  setSelectedPage(page);
-                  changeStory(title, selectedVolume, selectedChapter, page);
-                }}
-              >
-                {`${page}`}
-              </Button>
-            </Grid>
-          ))}
-        </Grid>
+        <div className="nav-page">
+          <h7 className="nav-page-heading">Page</h7>
+          <Grid
+            className="nav-page-items"
+            container
+            justifyContent="flex-start"
+            style={{
+              width: "100%",
+              padding: "4px 0px 4px 0px",
+            }}
+          >
+            {pages.map((page) => (
+              <Grid item xs="auto" key={page} sx={{ paddingLeft: "auto" }}>
+                <Button
+                  variant={page === selectedPage ? "contained" : ""}
+                  style={{
+                    backgroundColor:
+                      page === selectedPage ? "#3f51b5" : "transparent",
+                    color: page === selectedPage ? "#fff" : "#3f51b5",
+                  }}
+                  onClick={() => {
+                    setSelectedPage(page);
+                    changeStory(title, selectedVolume, selectedChapter, page);
+                  }}
+                >
+                  {`${page}`}
+                </Button>
+              </Grid>
+            ))}
+          </Grid>
+        </div>
       </div>
     </div>
   );
