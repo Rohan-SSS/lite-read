@@ -26,8 +26,6 @@ function App() {
         <StoryProvider>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            {/* genre tbi */}
-            {/* <Route path="/Genre/:genre" element={<GenrePage />} /> */}
             <Route path="/trending" element={<TrendingPage />} />
             <Route path="/browse" element={<BrowsePage />} />
             <Route path="/search" element={<SearchPage />} />

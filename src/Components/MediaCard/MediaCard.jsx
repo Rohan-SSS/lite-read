@@ -6,6 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { Link } from "react-router-dom";
+import slugify from "slugify";
 import "./MediaCard.css";
 
 export default function ImgMediaCard(props) {
@@ -20,7 +21,7 @@ export default function ImgMediaCard(props) {
       <CardMedia
         component="img"
         alt={props.alt}
-        height="320"
+        height="380"
         image={props.imageUrl}
       />
       <CardContent>
@@ -30,7 +31,9 @@ export default function ImgMediaCard(props) {
           component="div"
           sx={{
             fontWeight: "700",
-            color: "rgba(0, 0, 0, 0.8)",
+            color: "rgb(0, 0, 0)",
+            backgroundColor: "rgba(0, 0, 0, 0.2)",
+            margin: "-12px -12px -9px -12px",
           }}
         >
           <center>{props.title}</center>
@@ -39,15 +42,18 @@ export default function ImgMediaCard(props) {
       <CardActions
         sx={{
           justifyContent: "center",
+          backgroundColor: "rgba(0, 0, 0, 0.2)",
+          margin: "-3px -12px -3px -12px",
         }}
       >
         <Button
           size="small"
           component={Link}
-          to={`/read/${props.readlink}`}
+          to={`/read/${slugify(props.title).toLowerCase()}`}
           sx={{
             color: "black",
             ":hover": { background: "rgba(0, 0, 0, 0.4)" },
+            width: "40%",
           }}
         >
           <span className="custom-text">READ</span>
@@ -55,13 +61,14 @@ export default function ImgMediaCard(props) {
         <Button
           size="small"
           component={Link}
-          to={props.mallink}
+          to={props.malLink}
           sx={{
             color: "black",
             ":hover": { background: "rgba(0, 0, 0, 0.4)" },
+            width: "40%",
           }}
         >
-          <span className="custom-text">MAL</span>
+          <span className="custom-text">INFO</span>
         </Button>
       </CardActions>
     </Card>

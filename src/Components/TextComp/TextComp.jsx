@@ -8,7 +8,6 @@ const TextComp = () => {
   return (
     <div className="text-container">
       <p>{storyFromContext}</p>
-      {/* ... rest of the component */}
     </div>
   );
 };

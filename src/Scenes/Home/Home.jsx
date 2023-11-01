@@ -1,91 +1,26 @@
-import React from "react";
-import { MediaCard } from "../../Components/"; // Assuming the card component is in the same directory
+import React, { useEffect, useState } from "react";
+import { MediaCard } from "../../Components/";
 import "./Home.css";
 
-const cardData = [
-  {
-    title: "86-EIGHTY-SIX",
-    imageUrl:
-      "https://pm1.aminoapps.com/7834/07b4133a62bee87659a3a529a395812267593b10r1-1536-2048v2_hq.jpg",
-    alt: "86-eighty-six",
-    readLink: "86-eighty-six",
-    malLink: "https://myanimelist.net/manga/104039/86",
-  },
-  {
-    title: "86-EIGHTY-SIX",
-    imageUrl:
-      "https://pm1.aminoapps.com/7834/07b4133a62bee87659a3a529a395812267593b10r1-1536-2048v2_hq.jpg",
-    alt: "86-eighty-six",
-    readLink: "86-eighty-six",
-    malLink: "https://myanimelist.net/manga/104039/86",
-  },
-  {
-    title: "86-EIGHTY-SIX",
-    imageUrl:
-      "https://pm1.aminoapps.com/7834/07b4133a62bee87659a3a529a395812267593b10r1-1536-2048v2_hq.jpg",
-    alt: "86-eighty-six",
-    readLink: "86-eighty-six",
-    malLink: "https://myanimelist.net/manga/104039/86",
-  },
-  {
-    title: "86-EIGHTY-SIX",
-    imageUrl:
-      "https://pm1.aminoapps.com/7834/07b4133a62bee87659a3a529a395812267593b10r1-1536-2048v2_hq.jpg",
-    alt: "86-eighty-six",
-    readLink: "86-eighty-six",
-    malLink: "https://myanimelist.net/manga/104039/86",
-  },
-  {
-    title: "86-EIGHTY-SIX",
-    imageUrl:
-      "https://pm1.aminoapps.com/7834/07b4133a62bee87659a3a529a395812267593b10r1-1536-2048v2_hq.jpg",
-    alt: "86-eighty-six",
-    readLink: "86-eighty-six",
-    malLink: "https://myanimelist.net/manga/104039/86",
-  },
-  {
-    title: "86-EIGHTY-SIX",
-    imageUrl:
-      "https://pm1.aminoapps.com/7834/07b4133a62bee87659a3a529a395812267593b10r1-1536-2048v2_hq.jpg",
-    alt: "86-eighty-six",
-    readLink: "86-eighty-six",
-    malLink: "https://myanimelist.net/manga/104039/86",
-  },
-  {
-    title: "86-EIGHTY-SIX",
-    imageUrl:
-      "https://pm1.aminoapps.com/7834/07b4133a62bee87659a3a529a395812267593b10r1-1536-2048v2_hq.jpg",
-    alt: "86-eighty-six",
-    readLink: "86-eighty-six",
-    malLink: "https://myanimelist.net/manga/104039/86",
-  },
-  {
-    title: "86-EIGHTY-SIX",
-    imageUrl:
-      "https://pm1.aminoapps.com/7834/07b4133a62bee87659a3a529a395812267593b10r1-1536-2048v2_hq.jpg",
-    alt: "86-eighty-six",
-    readLink: "86-eighty-six",
-    malLink: "https://myanimelist.net/manga/104039/86",
-  },
-  {
-    title: "86-EIGHTY-SIX",
-    imageUrl:
-      "https://pm1.aminoapps.com/7834/07b4133a62bee87659a3a529a395812267593b10r1-1536-2048v2_hq.jpg",
-    alt: "86-eighty-six",
-    readLink: "86-eighty-six",
-    malLink: "https://myanimelist.net/manga/104039/86",
-  },
-  {
-    title: "86-EIGHTY-SIX",
-    imageUrl:
-      "https://pm1.aminoapps.com/7834/07b4133a62bee87659a3a529a395812267593b10r1-1536-2048v2_hq.jpg",
-    alt: "86-eighty-six",
-    readLink: "86-eighty-six",
-    malLink: "https://myanimelist.net/manga/104039/86",
-  },
-];
-
 const HomePage = () => {
+  const [cardData, setCardData] = useState([]);
+
+  useEffect(() => {
+    const fetchNovels = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8000/novels");
+        if (!response.ok) {
+          throw new Error("Error 404");
+        }
+        const data = await response.json();
+        setCardData(data);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+    fetchNovels();
+  }, []);
+
   return (
     <>
       <div className="home-container">
@@ -97,10 +32,9 @@ const HomePage = () => {
             <MediaCard
               key={index}
               title={data.title}
-              imageUrl={data.imageUrl}
+              imageUrl={data.imageURL}
               alt={data.alt}
-              readlink={data.readLink}
-              mallink={data.malLink}
+              malLink={data.malLink}
             />
           ))}
         </div>
