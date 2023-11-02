@@ -72,6 +72,10 @@ const MgNavComp = ({ title }) => {
 
   const { changeStory } = useContext(StoryContext);
 
+  useEffect(() => {
+    changeStory(title, selectedVolume, selectedChapter, selectedPage);
+  }, [title, selectedVolume, selectedChapter, selectedPage]);
+
   return (
     <div className="nav-container">
       <div className="nav-heading">{title}</div>
@@ -99,7 +103,6 @@ const MgNavComp = ({ title }) => {
                   onClick={() => {
                     setSelectedVolume(volume);
                     setSelectedChapter(1);
-                    changeStory(title, volume, selectedChapter, selectedPage);
                   }}
                 >
                   {`${volume}`}
@@ -132,7 +135,6 @@ const MgNavComp = ({ title }) => {
                   onClick={() => {
                     setSelectedChapter(chapter);
                     setSelectedPage(1);
-                    changeStory(title, selectedVolume, chapter, selectedPage);
                   }}
                 >
                   {`${chapter}`}
@@ -164,7 +166,6 @@ const MgNavComp = ({ title }) => {
                   }}
                   onClick={() => {
                     setSelectedPage(page);
-                    changeStory(title, selectedVolume, selectedChapter, page);
                   }}
                 >
                   {`${page}`}

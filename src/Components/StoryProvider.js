@@ -4,12 +4,15 @@ export const StoryContext = createContext();
 
 export const StoryProvider = ({ children }) => {
   const [textData, setTextData] = useState("");
+
+  // Initializing the selected state with default values.
   const [selected, setSelected] = useState({
+    title: null,
     volume: 1,
     chapter: 1,
-    page: 1,
-    title: ""
+    page: 1
   });
+
   const changeStory = (title, volume, chapter, page) => {
     setSelected({
       title,
@@ -22,6 +25,8 @@ export const StoryProvider = ({ children }) => {
   useEffect(() => {
     const fetchTextData = async () => {
       const { title, volume, chapter, page } = selected;
+
+      if (!title) return;
 
       try {
         const response = await fetch(
