@@ -6,9 +6,10 @@ const TextComp = () => {
   const storyFromContext = useContext(StoryContext).story;
 
   return (
-    <div className="text-container">
-      <p>{storyFromContext}</p>
-    </div>
+    <div
+      className="text-container"
+      dangerouslySetInnerHTML={{ __html: storyFromContext }}
+    />
   );
 };
 
