@@ -33,7 +33,7 @@ export default function ImgMediaCard(props) {
             fontWeight: "700",
             color: "rgb(0, 0, 0)",
             backgroundColor: "rgba(0, 0, 0, 0.2)",
-            margin: "-12px -12px -9px -12px",
+            margin: "-16px -16px -14px -16px",
           }}
         >
           <center>{props.title}</center>
@@ -43,7 +43,7 @@ export default function ImgMediaCard(props) {
         sx={{
           justifyContent: "center",
           backgroundColor: "rgba(0, 0, 0, 0.2)",
-          margin: "-3px -12px -3px -12px",
+          margin: "-2px -12px -2px -12px",
         }}
       >
         <Button
@@ -57,18 +57,6 @@ export default function ImgMediaCard(props) {
           }}
         >
           <span className="custom-text">READ</span>
-        </Button>
-        <Button
-          size="small"
-          component={Link}
-          to={props.malLink}
-          sx={{
-            color: "black",
-            ":hover": { background: "rgba(0, 0, 0, 0.4)" },
-            width: "40%",
-          }}
-        >
-          <span className="custom-text">INFO</span>
         </Button>
       </CardActions>
     </Card>
