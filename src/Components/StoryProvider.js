@@ -30,7 +30,7 @@ export const StoryProvider = ({ children }) => {
 
       try {
         const response = await fetch(
-          `http://127.0.0.1:8000/novel/${title}/volume/${volume}/chapter/${chapter}/page/${page}`
+          `http://127.0.0.1:8000/novel/${title}/${volume}/${chapter}/${page}`
         );
         const data = await response.json();
         setTextData(data.content);

@@ -11,10 +11,12 @@ const MgNavComp = ({ title }) => {
   useEffect(() => {
     const fetchVolumeData = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/novel/${title}/`);
+        const response = await fetch(
+          `http://127.0.0.1:8000/novel/${title}/volumes`
+        );
         if (!response.ok) throw new Error("Failed to fetch volume data");
-        const novelData = await response.json();
-        setNoOfVolumes(novelData.noOfVolumes);
+        const allVolumes = await response.json();
+        setNoOfVolumes(allVolumes.length);
       } catch (err) {
         console.error("Failed to fetch volume data:", err);
       }
@@ -32,7 +34,7 @@ const MgNavComp = ({ title }) => {
 
       try {
         const response = await fetch(
-          `http://127.0.0.1:8000/novel/${title}/volume/${selectedVolume}`
+          `http://127.0.0.1:8000/novel/${title}/${selectedVolume}`
         );
         if (!response.ok) throw new Error("Failed to fetch chapter data");
 
@@ -56,7 +58,7 @@ const MgNavComp = ({ title }) => {
 
       try {
         const response = await fetch(
-          `http://127.0.0.1:8000/novel/${title}/volume/${selectedVolume}/chapter/${selectedChapter}`
+          `http://127.0.0.1:8000/novel/${title}/${selectedVolume}/${selectedChapter}`
         );
         if (!response.ok) throw new Error("Failed to fetch page data");
 
